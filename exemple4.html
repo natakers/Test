@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+		var string = prompt('Введите строку, разделитель пробел').toLowerCase().split(' ');
+		var word = prompt('Введите слово').toLowerCase();
+		var count = 0;
+		for (var i = 0; i <= string.length; i++) {
+			if (string[i] == word) {
+				count++;
+			}
+		}
+		console.log("В предложении слово \"" + word + "\" повторяется " + count + " раз.");
+
+	</script>
+
+	
+</body>
+</html>

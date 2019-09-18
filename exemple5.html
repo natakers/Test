@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+		var firstNumber = +prompt('Введите начальное число последовательности. Минимум 0.');
+		var secondNumber = +prompt('Введите конечное число последовательности. Максимум 100.');
+		if (firstNumber<0 || secondNumber>100 || secondNumber<firstNumber) {
+			console.log("Параметры введены не верно")
+		}
+		else {
+			var arr = new Array();
+			var j = 0;
+				for (var i = firstNumber; i <= secondNumber; i++) {
+				arr[j] = i.toString(10);
+				j++;
+			}
+			console.log("Числа-палиндромы: " + poli(arr));
+		}
+		
+		function poli() {
+			var arr2 = new Array();
+			for (var j = 0; j < arr.length; j++) {
+				for (var i = 0; i < Math.floor(arr[j].length / 2); i++) {
+					if (arr[j].charAt(i) != arr[j].charAt(arr[j].length - 1 - i)) {
+						break;
+					}
+					arr2.push(arr[j]);
+					break;
+				}
+			}
+			return arr2;
+		}
+
+	</script>
+
+	
+</body>
+</html>

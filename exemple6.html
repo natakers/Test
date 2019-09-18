@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+	
+  var weight = +prompt('Введите вместимость рюкзака');
+  var numberOfThings = +prompt('Введите число предметов');
+  var arrWeight = new Array();
+  var price = new Array();
+  arrWeight[0] = 0;
+  price[0] = 0;
+  for (var i = 1; i <= numberOfThings; i++) {
+    arrWeight.push(+prompt('Введите вес ' + i + "ой вещи"));
+    price.push(+prompt('Введите стоимость ' + i + "ой вещи")); 
+  } 
+
+  var d = new Array(numberOfThings+1);
+  for (var i = 0; i < d.length; i++) {
+    d[i] = new Array(weight+1);
+    for (var j = 0; j <= weight; j++) {
+      d[i][j] = 0;
+    }
+  }
+
+  for (var i = 1; i <= numberOfThings; i++) {
+    for (var j = 1; j <= weight; j++) {
+      d[i][j] = d[i-1][j];
+      if (j-arrWeight[i]>=0) {
+        d[i][j] = Math.max(d[i][j], (d[i-1][j-arrWeight[i]]+price[i]));
+        var priceOfThing = d[i][j];
+      }
+    }
+  }
+
+  var thingsNumbers = new Array();
+  var k = weight;
+  for (var i = numberOfThings; i > 0; i--) { 
+    if (d[i][k] != d[i - 1][k]) {
+      thingsNumbers.push(i);
+      k -= arrWeight[i];
+    }
+  }
+  console.log("В рюкзаке будут лежать вещи под номерами " + thingsNumbers + "\nВес рюкзака " + (weight-k) + "\nСтоимость рюкзака " + priceOfThing);
+      
+
+	</script>
+
+	
+</body>
+</html>

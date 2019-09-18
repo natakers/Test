@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+		var string = prompt('Введите предложение, разделитель пробел. Последнее слово без пробела в конце.');
+		var count = 0;
+		var arr = string.toLowerCase().split(' ');
+		console.log("Слов в предложении: " + arr.length);
+		arr = arr.sort();
+		arr = arr.map(item => item.charAt(0).toUpperCase() + item.slice(1)).join(" ");
+		console.log(arr);
+	</script>
+
+	
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+		var n = +prompt('Введите число');
+		chislo(n);
+		function chislo() {
+			if (isNaN(n)) {
+				return console.log("Число введено некорректно");
+			}
+
+			if ((n == 1) || (n == 0)) {
+				return console.log("Вы ввели целое число не относящееся ни к простым, ни к составным");
+			}
+				
+			if (n%2 == 0) {
+				if (n == 2) {
+					return console.log("Число четное простое");
+				}
+				console.log("Число четное составное");
+			}
+
+			else {
+				for (var i = 3; i*i <= n; i++) {
+					if (n%i == 0) {
+						return console.log("Число нечетное составное");
+					}
+				}
+				console.log("Число нечетное простое");
+			}		
+		}
+	</script>
+
+	
+</body>
+</html>

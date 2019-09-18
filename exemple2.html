@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+	<style>
+	</style>
+
+	<script>	
+		var firstNumber = +prompt('Введите первое число');
+		var secondNumber = +prompt('Введите второе число');
+		if (isNaN(firstNumber) || isNaN(secondNumber)) {
+			console.log("Число введено некорректно");
+		}
+		else {
+			var arrFirstNumber = del(firstNumber);
+			var arrSecondNumber = del(secondNumber);
+			var arrNod = nod(arrFirstNumber, arrSecondNumber);
+			var arrNok = nok(arrFirstNumber, arrSecondNumber);
+			console.log("Наибольший общий делитель " + arrNod);
+			console.log("Наименьшее общее кратное " + arrNok);
+		}
+			
+		function del(number) {
+			var j = 0;
+			var i = 2;
+			var arr = new Array();
+			// arr[j] = number;
+			if (number == 1 || number == 0) {
+				arr[j] = number;
+				return arr;
+			}
+			do {
+				if (number % i == 0) {
+			  		arr[j] = i;
+			  		j++;
+			  		number = number / i;
+			 	}
+			 	else i++;
+			}
+			while (i < number) {
+				arr[j] = i; 
+				return arr;
+			}
+		}
+
+		function nod(arrfirst, arrsecond) {
+			var arrNod = new Array();
+			if (arrfirst[0] == 0 || arrsecond[0] == 0){
+				return arrNod[0] = multipl(arrfirst) +  multipl(arrsecond);
+			}
+			if (arrfirst[0] == 1 || arrsecond[0] == 1){
+				return 1;
+			}
+			for (var i = 0; i < arrfirst.length; i++) {
+				for (var j = 0; j < arrsecond.length; j++) {
+					if (arrfirst[i] == arrsecond[j]) {
+						arrNod.push(arrsecond[j]);
+						arrsecond.splice(j, 1);
+						break;
+					}
+				}
+			}
+
+			arrNod = multipl(arrNod);
+			return arrNod;
+		}
+
+		function nok(arrfirst, arrsecond) {
+			if (arrfirst[0] == 0 || arrsecond[0] == 0){
+				return 0;
+			}
+			if (arrfirst[0] == 1 || arrsecond[0] == 1){
+				return arrfirst[0] = multipl(arrfirst) * multipl(arrsecond);
+			}
+			for (var i = 0; i<arrsecond.length; i++) {
+				arrfirst.push(arrsecond[i])
+			}
+
+			arrfirst = multipl(arrfirst);
+			return arrfirst;
+		}
+
+		function multipl(arr) {
+			var mul=1;
+			for (var i = 0; i<arr.length; i++) {
+				mul = mul * arr[i];
+			}
+			return mul;
+		}
+
+	</script>
+
+	
+</body>
+</html>
